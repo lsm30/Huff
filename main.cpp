@@ -1,23 +1,15 @@
 
 #include <iostream>
 #include <cstring>
+#include "HuffmanTree.hpp"
 
-struct WeightMap
-{
-    char name;
-    int weight;
-};
 int main()
 {
-    std::string o = "bourgeiose";
-    int i = 0;
-    WeightMap map[100];
-    while (o[i] != '\0')
-    {
-        map[i].name = o[i];
-        std::cout << map[i++].name;
-    }
 
-
+    std::string o = "bourgpppppeoisie";
+    // std::string o = "poopies";
+    HuffmanTree tree(o);
+    std::cout << "\n\n";
+    tree.printPreOrder();
     return 0;
 }

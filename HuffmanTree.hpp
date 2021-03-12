@@ -23,60 +23,59 @@
 #include <iostream>
 #include <string>
 
-template<class T>
+
+struct WeightMap
+{
+    char name;
+    int weight;
+};
+
+
+
+
 class HuffmanTree
 {
 public:
-    HuffmanTree(int);
-    virtual ~HuffmanTree();
-    void insertBack(T);
-    void insertFront(T);
-    int search(T);
-    void remove(T);
-    void printForward();
-    void printBackward();
-    void printFreeList();
-    int length();
+    HuffmanTree(std::string);
+    HuffmanTree(char*);
+    void printPreOrder();
+    //virtual ~HuffmanTree();
+    std::string search(char);
     void clear();
-
+    WeightMap map[26];
 private:
     struct node
     {
-        T val;
+        char name;
         int weight;
         bool internal;
         node *left;
         node *right;
-        node(T val, int weight)
+        node(int weight, char name)
         {
-            this->val = val;
+            this->name = name;
             this->weight = weight;
             left = nullptr;
             right = nullptr;
             internal = false;
         }
         node(int weight)
-        {
+        {   
             this->weight = weight;
             left = nullptr;
             right = nullptr;
             internal = true;
         }
     };
-
-    node *head;
-    node *tail;
-    node *free_head;
-    node *free_tail;
+    void outputPreOrder(node*);
+    node *root;
+    node* nodeQueue[100];
+    void insertionSort(node**, int);
+    void deepCopy(node* n1, node* n2);
+    int find(node* aNode, char c);
 
 };
 
-template class HuffmanTree<int>;
-template class HuffmanTree<unsigned int>;
-template class HuffmanTree<char>;
-template class HuffmanTree<double>;
-template class HuffmanTree<float>;
-template class HuffmanTree<std::string>;
 
 
 #endif
