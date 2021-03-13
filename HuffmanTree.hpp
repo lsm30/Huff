@@ -37,10 +37,10 @@ class HuffmanTree
 {
 public:
     HuffmanTree(std::string);
-    HuffmanTree(char*);
     void printPreOrder();
     //virtual ~HuffmanTree();
-    int search(char);
+    std::string search(char);
+    void displayChart();
     void clear();
     WeightMap map[26];
 private:
@@ -67,12 +67,14 @@ private:
             internal = true;
         }
     };
+    std::string original;
     void outputPreOrder(node*);
     node *root;
     node* nodeQueue[100];
     void insertionSort(node**, int);
     void deepCopy(node* n1, node* n2);
-    bool find(node* aNode, char c, int path);
+    void find(node* aNode, char c, std::string path, std::string& absolute);
+    void generateChart(node* aNode, std::string path);
 
 };
 
