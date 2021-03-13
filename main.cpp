@@ -7,9 +7,11 @@ int main()
 {
 
     std::string o = "bourgpppppeoisie";
-    // std::string o = "poopies";
     HuffmanTree tree(o);
+    //
     std::cout << "\n\n";
     tree.printPreOrder();
+
+    std::cout << "\n\n\n" << tree.search('p');
     return 0;
 }

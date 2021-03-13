@@ -40,7 +40,7 @@ public:
     HuffmanTree(char*);
     void printPreOrder();
     //virtual ~HuffmanTree();
-    std::string search(char);
+    int search(char);
     void clear();
     WeightMap map[26];
 private:
@@ -72,7 +72,7 @@ private:
     node* nodeQueue[100];
     void insertionSort(node**, int);
     void deepCopy(node* n1, node* n2);
-    int find(node* aNode, char c);
+    bool find(node* aNode, char c, int path);
 
 };
 

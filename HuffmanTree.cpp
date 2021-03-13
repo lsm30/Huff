@@ -18,7 +18,9 @@
  *
  */
 #include "HuffmanTree.hpp"
+#include <bitset>
 
+int bitcount = 0;
 HuffmanTree::HuffmanTree(std::string o)
 {
     int i = 0;
@@ -192,9 +194,30 @@ void HuffmanTree::outputPreOrder(node* aNode){
     }
 }
 
-std::string HuffmanTree::search(char c)
+int HuffmanTree::search(char c)
 {
-    std::string path = "";
+    int path = 0b0;
+    find(root, c, path);
+    return path;
+}
+
+bool HuffmanTree::find(node* aNode, char c, int path)
+{
+	if (aNode == root) {
+		find(aNode->left, c, (path<<1));
+		find(aNode->right, c, (path+1));
+	} else {
+		std::cout << std::bitset<4>(path) << '\n';
+		if(aNode->internal == false){
+			if (aNode->name == c)
+				std::cout << std::bitset<8>(path);
+		} else {
+			find(aNode->left, c, (path<<1));
+			find(aNode->right, c, ((path<<1) + 1));
+		}
+
+	}
+	return false;
 }
 
 void HuffmanTree::deepCopy(node* n1, node* n2)
