@@ -2,19 +2,14 @@
 // Logan Mashchak
 // Data Structures
 // Project 2: Huffman Tree
-// 02/05/21
+// 03/14/21
 //
 /*  Huffman Tree: a templated data structure storing the data in a doubly linked list
  *  with deleted nodes being allocated to the free list for reuse.
  *
  * Functionality:
- * 1. insert a value
- * 2. remove a value
- * 3. search for a value (return iterations found)
- * 4. clear list
- * 5. Print list forward
- * 6. Print list backwards
- * 7. Print status of free list
+ * 1. search for a value (returns binary encoding)
+ * 2. Print chart of encoding
  *
  */
 #ifndef PROJECT2_HUFFMANTREE_H
@@ -37,8 +32,8 @@ class HuffmanTree
 {
 public:
     HuffmanTree(std::string);
-    void printPreOrder();
-    //virtual ~HuffmanTree();
+    
+    virtual ~HuffmanTree();
     std::string search(char);
     void displayChart();
     void clear();
@@ -68,6 +63,7 @@ private:
         }
     };
     std::string original;
+    void printPreOrder();
     void outputPreOrder(node*);
     node *root;
     node* nodeQueue[100];
@@ -75,6 +71,7 @@ private:
     void deepCopy(node* n1, node* n2);
     void find(node* aNode, char c, std::string path, std::string& absolute);
     void generateChart(node* aNode, std::string path);
+    void remove(node*);
 
 };
 
